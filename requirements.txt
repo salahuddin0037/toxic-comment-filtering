@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 streamlit
 pandas
 numpy
@@ -7,7 +6,6 @@ joblib
 nltk
 emoji
 contractions
-=======
 streamlit
 pandas
 numpy
@@ -16,4 +14,3 @@ joblib
 nltk
 emoji
 contractions
->>>>>>> 7f92ffe4032a2e9ca65b8364acce59c9356732c1
