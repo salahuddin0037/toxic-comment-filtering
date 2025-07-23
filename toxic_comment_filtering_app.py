@@ -66,7 +66,7 @@ def main():
     - Insult
     - Identity Hate
     """)
-    
+
     # Example comments
     example_comments = {
         "Clean comment": "I appreciate your perspective on this matter.",
@@ -75,7 +75,7 @@ def main():
         "Obscene language": "Go f*** yourself you stupid b****!",
         "Gaming toxicity": "kys noob, you're trash at this game l2p"
     }
-    
+
     # Sidebar with examples
     with st.sidebar:
         st.header("Try these examples:")
@@ -86,37 +86,34 @@ def main():
         
         if st.button("Load Example"):
             st.session_state.example_comment = example_comments[selected_example]
-    
+
     # Main input area
     comment = st.text_area(
         "Enter a comment to analyze:",
         value=st.session_state.get("example_comment", ""),
         placeholder="Type or paste your comment here..."
     )
-    
+
     if st.button("Analyze Comment", type="primary"):
         if not comment.strip():
             st.warning("Please enter a comment to analyze")
         else:
             with st.spinner("Analyzing comment..."):
-                # Simulate processing time for better UX
                 time.sleep(0.5)
-                
+
                 # Get predictions
                 results = classifier.predict(comment)
-                
+
                 # Display overall toxicity
                 max_toxicity = max(results.values())
                 if max_toxicity > 0.5:
                     st.error("⚠️ Toxic content detected!")
                 else:
                     st.success("✅ No toxic content detected")
-                
+
                 # Show detailed results
                 st.subheader("Detailed Analysis")
-                
                 for label, score in results.items():
-                    # Create a progress bar for each toxicity type
                     st.markdown(f"**{label.replace('_', ' ').title()}**")
                     st.markdown(
                         f"""
@@ -128,11 +125,11 @@ def main():
                         """,
                         unsafe_allow_html=True
                     )
-                
+
                 # Show processed text
                 with st.expander("View processed text"):
                     st.text(classifier.preprocess_text(comment))
-                
+
                 # Show interpretation
                 st.subheader("Interpretation")
                 if max_toxicity > 0.8:

@@ -6,11 +6,12 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import numpy as np
 import nltk
+
+# Download required resources
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')  # For lemmatization
-
 
 class ToxicCommentClassifier:
     def __init__(self):
